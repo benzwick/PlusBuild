@@ -1,0 +1,37 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  ACTIONS_RUNNER_DEBUG: true
+  ACTIONS_STEP_DEBUG: true
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Create Plus directory
+      run: mkdir /home/runner/work/Plus
+    - name: Clone Plus
+      working-directory: /home/runner/work/Plus
+      run: git clone https://github.com/PlusToolkit/PlusBuild.git
+    - name: Create Plus build directory
+      run: mkdir /home/runner/work/Plus/PlusBuild-bin
+    - name: Configure Plus
+      working-directory: /home/runner/work/Plus/PlusBuild-bin
+      run: cmake /home/runner/work/Plus/PlusBuild
+    - name: Make Plus
+      working-directory: /home/runner/work/Plus/PlusBuild-bin
+      run: make -j4
+    - name: Install MFEM
+      working-directory: /home/runner/work/Plus/PlusBuild-bin
+      run: make install
