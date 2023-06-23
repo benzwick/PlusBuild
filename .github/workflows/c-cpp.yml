@@ -43,7 +43,7 @@ jobs:
       run: mkdir /home/runner/work/Plus/PlusBuild-bin
     - name: Configure Plus
       working-directory: /home/runner/work/Plus/PlusBuild-bin
-      run: cmake /home/runner/work/Plus/PlusBuild
+      run: cmake -DVTK_MODULE_ENABLE_VTK_GUISupportQtQuick=DONT_WANT /home/runner/work/Plus/PlusBuild
     - name: Make Plus
       working-directory: /home/runner/work/Plus/PlusBuild-bin
       run: make
