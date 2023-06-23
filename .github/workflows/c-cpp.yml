@@ -38,7 +38,7 @@ jobs:
       run: cmake /home/runner/work/Plus/PlusBuild
     - name: Make Plus
       working-directory: /home/runner/work/Plus/PlusBuild-bin
-      run: make -j4
+      run: make
     - name: Install Plus
       working-directory: /home/runner/work/Plus/PlusBuild-bin
       run: make install
