@@ -19,11 +19,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - name: Add repositories
+      run: sudo add-apt-repository universe
+    - name: Update package list
+      run: sudo apt update
     - name: Install prerequisites
-      run: \
-        sudo add-apt-repository universe && \
-        sudo apt update && \
-        sudo apt install git build-essential cmake \
+      run: sudo apt install git build-essential cmake \
           qtbase5-dev qtmultimedia5-dev qttools5-dev libqt5xmlpatterns5-dev qtbase5-private-dev libqt5x11extras5-dev libxt-dev
   
     - name: Create Plus directory
