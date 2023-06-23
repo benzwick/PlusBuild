@@ -19,12 +19,18 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+# Why? libglvnd-dev   because:
+#     -- Found OpenGL: /usr/lib/x86_64-linux-gnu/libGL.so  found components: OpenGL GLX 
+#     CMake Error at Utilities/OpenGL/CMakeLists.txt:72 (message):
+#     It appears as though OpenGL was found, but a GLVND-based install was
+#     expected and it was not found.  Please install GLVND libraries.
     - name: Install prerequisites
       run: |
         sudo add-apt-repository -y universe
         sudo apt update
         sudo apt install -y git build-essential cmake \
-          qtbase5-dev qtmultimedia5-dev qttools5-dev libqt5xmlpatterns5-dev qtbase5-private-dev libqt5x11extras5-dev libxt-dev
+          qtbase5-dev qtmultimedia5-dev qttools5-dev libqt5xmlpatterns5-dev qtbase5-private-dev libqt5x11extras5-dev libxt-dev \
+          libglvnd-dev
   
     - name: Create Plus directory
       run: mkdir /home/runner/work/Plus
