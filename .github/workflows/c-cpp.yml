@@ -13,15 +13,18 @@ env:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 360
 
     steps:
     - uses: actions/checkout@v3
     
     - name: Install prerequisites
-      run: sudo apt update && sudo apt install git build-essential cmake \
-        qtbase5-dev qtmultimedia5-dev qttools5-dev libqt5xmlpatterns5-dev qtbase5-private-dev libqt5x11extras5-dev libxt-dev
+      run: \
+        sudo add-apt-repository universe && \
+        sudo apt update && \
+        sudo apt install git build-essential cmake \
+          qtbase5-dev qtmultimedia5-dev qttools5-dev libqt5xmlpatterns5-dev qtbase5-private-dev libqt5x11extras5-dev libxt-dev
   
     - name: Create Plus directory
       run: mkdir /home/runner/work/Plus
