@@ -21,7 +21,7 @@ jobs:
     
     - name: Install prerequisites
       run: sudo apt update && sudo apt install git build-essential cmake \
-        qt5-default qtmultimedia5-dev qttools5-dev libqt5xmlpatterns5-dev qtbase5-private-dev libqt5x11extras5-dev libxt-dev
+        qtbase5-dev qtmultimedia5-dev qttools5-dev libqt5xmlpatterns5-dev qtbase5-private-dev libqt5x11extras5-dev libxt-dev
   
     - name: Create Plus directory
       run: mkdir /home/runner/work/Plus
@@ -36,6 +36,6 @@ jobs:
     - name: Make Plus
       working-directory: /home/runner/work/Plus/PlusBuild-bin
       run: make -j4
-    - name: Install MFEM
+    - name: Install Plus
       working-directory: /home/runner/work/Plus/PlusBuild-bin
       run: make install
