@@ -19,6 +19,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - name: Install prerequisites
+      run: sudo apt update && sudo apt install git build-essential cmake \
+        qt5-default qtmultimedia5-dev qttools5-dev libqt5xmlpatterns5-dev qtbase5-private-dev libqt5x11extras5-dev libxt-dev
+  
     - name: Create Plus directory
       run: mkdir /home/runner/work/Plus
     - name: Clone Plus
